@@ -41,7 +41,6 @@ public class EnemyManager : MonoBehaviour {
 
 #endregion
 
-
 #region Path related stuff
 	public Transform[] pathNodes;
 	private void GetAllNodes ()
@@ -60,8 +59,24 @@ public class EnemyManager : MonoBehaviour {
 		var _enemy = Instantiate(enemyPrefab);
 		_enemy.GetComponent<SpriteRenderer>().sprite = ed.sprite;
 		_enemy.GetComponent<Mortal>().lifeMax = ed.lifeMax;
+		_enemy.GetComponent<PathFinder>().speed = ed.speed;
+		enemys.Add(_enemy);
 	}
 
 
 #endregion
+
+#region  Wave related Stuff
+
+
+public LevelData currentLevel;
+
+public void LaunchWave()
+{
+	
+}
+
+#endregion
+
+
 }

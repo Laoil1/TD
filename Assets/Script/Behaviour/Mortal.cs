@@ -38,6 +38,7 @@ public class Mortal : MonoBehaviour {
 	private void Die()
 	{
 		Debug.Log(gameObject.name + " dies");
+		EnemyManager.Instance.enemys.Remove(this.gameObject);
 	}
 
 }
