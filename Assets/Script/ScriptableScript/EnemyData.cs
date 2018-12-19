@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData : MonoBehaviour {
+[CreateAssetMenu(fileName="New Enemy",menuName="TD/Enemy",order=2)]
+public class EnemyData : ScriptableObject 
+{
+	public int lifeMax;
+	public Sprite sprite;
+	public Color color;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

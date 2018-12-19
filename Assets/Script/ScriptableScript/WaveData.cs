@@ -2,15 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveData : MonoBehaviour {
+[CreateAssetMenu(fileName="New Wave",menuName="TD/Wave",order=3)]
+public class WaveData : ScriptableObject 
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

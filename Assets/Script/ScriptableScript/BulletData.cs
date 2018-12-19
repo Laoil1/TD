@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletData : MonoBehaviour {
+[CreateAssetMenu(fileName="NewBullet",menuName="TD/Bullet",order=4)]
+public class BulletData : ScriptableObject 
+{
+	public Sprite sprite;
+	public int damage;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
