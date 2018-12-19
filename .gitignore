@@ -19,3 +19,9 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+\.vs/TD/DesignTimeBuild/
+
+*.lock
+
+\.vs/TD/v15/Server/sqlite3/
