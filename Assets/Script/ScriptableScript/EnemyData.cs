@@ -8,5 +8,8 @@ public class EnemyData : ScriptableObject
 	public int lifeMax;
 	public Sprite sprite;
 	public Color color;
+	
+	[Range(1,15)]
+	public float speed = 15;
 
 }
