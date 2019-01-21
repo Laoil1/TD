@@ -24,6 +24,14 @@ public class Mortal : MonoBehaviour {
 	{
 		life = lifeMax;
 	}
+	public void RestoreLife(int amount)
+	{
+		life+=amount;
+	}
+	public void LoseLife(int amount)
+	{
+		life-=amount;
+	}
 
 	//Updtate life call check the life of the mortal
 	private void Updatelife()

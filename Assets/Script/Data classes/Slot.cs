@@ -4,21 +4,37 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour {
 
-	public Transform self;
-	public GameObject spawnedPrefab;
+	public GameObject slotObject;
+	public Transform showRange;
 	public bool occupied;
 
 	private void Start()
 	{
-		self = transform;
 		TowerManager.instance.slots.Add(this);
 	}
 
 	private void OnMouseDown()
 	{
+		CallObjectOnSlot();
+	}
+	private void OnMouseOver()
+	{
+		if(occupied) return;
+		showRange.localScale = Vector3.one * TowerManager.instance.actualTowerData.range;
+		showRange.gameObject.SetActive(true);
+	}
+	private void OnMouseExit()
+	{
+		if(occupied) return;
+		showRange.gameObject.SetActive(false);
+	}
+	private void CallObjectOnSlot ()
+	{
 		if (occupied) return;
 
-		TowerManager.instance.SlotClicked(this);
+		TowerManager.instance.SlotClicked(slotObject);
+		occupied = true;
+
 	}
 
 }

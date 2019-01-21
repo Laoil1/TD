@@ -6,6 +6,7 @@ using UnityEngine;
 public struct Wave 
 {
 	public float timeBeforeWave;
-	public float timeBetweenTroups;
+	public float timeBetweenEnemys;
+	public int difficulty;
 	public EnemyData[] enemyDatas;
 }

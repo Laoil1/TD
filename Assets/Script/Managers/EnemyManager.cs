@@ -16,7 +16,7 @@ public class EnemyManager : MonoBehaviour {
 
 	private void Start ()
 	{
-
+		LaunchLevel(currentLevel);
 	}
 
 	private void Update ()
@@ -57,7 +57,9 @@ public class EnemyManager : MonoBehaviour {
 	private void CreateEnemy (EnemyData ed)
 	{
 		var _enemy = Instantiate(enemyPrefab);
-		_enemy.GetComponent<SpriteRenderer>().sprite = ed.sprite;
+		var _enemySR = _enemy.GetComponent<SpriteRenderer>();
+		_enemySR.sprite = ed.sprite;
+		_enemySR.color = ed.color;
 		_enemy.GetComponent<Mortal>().lifeMax = ed.lifeMax;
 		_enemy.GetComponent<PathFinder>().speed = ed.speed;
 		enemys.Add(_enemy);
@@ -71,9 +73,42 @@ public class EnemyManager : MonoBehaviour {
 
 public LevelData currentLevel;
 
-public void LaunchWave()
+public void LaunchLevel(LevelData level)
 {
-	
+	StartCoroutine(ILevel(level));
+}
+
+public IEnumerator ILevel(LevelData level)
+{
+	var timer = 0.0f;
+	foreach (var wave in level.waves)
+	{
+		timer = 0.0f;
+		while(timer<= wave.timeBeforeWave)
+		{
+			timer+=Time.deltaTime;
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+		StartCoroutine(IWave(wave));
+	}
+	yield break;
+}
+
+public IEnumerator IWave(Wave _wave)
+{
+	var timer = 0.0f;
+	foreach (var enemy in _wave.enemyDatas)
+	{
+		timer = 0.0f;
+		CreateEnemy(enemy);
+
+		while(timer<= _wave.timeBetweenEnemys)
+		{
+			timer+=Time.deltaTime;
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+	}
+	yield break;
 }
 
 #endregion

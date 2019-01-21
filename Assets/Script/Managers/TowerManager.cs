@@ -5,8 +5,8 @@ using UnityEngine;
 public class TowerManager : MonoBehaviour {
 
 	public static TowerManager instance;
-	
 	public List<Slot> slots = new List<Slot>();
+	public bool canBuild;
 
 	// Use this for initialization
 	void Awake () {
@@ -20,8 +20,20 @@ public class TowerManager : MonoBehaviour {
 		}
 	}
 
-	public void SlotClicked(Slot _slot)
+	#region  PlaceTower
+
+	public List<GameObject> towers;
+	public TowerData actualTowerData;
+
+	public void SlotClicked(GameObject tower)
 	{
-		Instantiate(_slot.spawnedPrefab, _slot.self.position, Quaternion.identity, _slot.self);
+		var _towerSR = tower.GetComponent<SpriteRenderer>();
+		_towerSR.sprite = actualTowerData.sprite;
+		_towerSR.color = actualTowerData.color;
+		tower.GetComponent<Shooter>().SetRange(actualTowerData.range);
+		towers.Add(tower);
 	}
+
+
+#endregion
 }

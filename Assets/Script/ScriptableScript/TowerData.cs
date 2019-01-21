@@ -7,5 +7,8 @@ public class TowerData : ScriptableObject
 {
 	public float firePower;
 	public Sprite sprite;
+	public Color color;
+	public int range;
+	public int price;
 
 }
